@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Care.IO",
+  title: "CareHub",
   description: "We about them",
 };
 

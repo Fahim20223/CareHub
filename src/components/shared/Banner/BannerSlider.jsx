@@ -18,7 +18,7 @@ const BannerSlider = () => {
       description:
         "There are many variations of passages Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.",
       image:
-        "https://images.unsplash.com/photo-1587616211892-e2e7f862cd7e?w=1920&q=80",
+        "https://plus.unsplash.com/premium_photo-1666299880508-bffece864e96?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       circleImage:
         "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80",
       gradient: "from-purple-500 to-pink-500",
@@ -47,7 +47,7 @@ const BannerSlider = () => {
       image:
         "https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?w=1920&q=80",
       circleImage:
-        "https://images.unsplash.com/photo-1587616211892-e2e7f862cd7e?w=800&q=80",
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       gradient: "from-teal-400 to-blue-500",
       darkGradient: "from-green-500 to-emerald-700",
       badgeColor: "bg-red-400",
