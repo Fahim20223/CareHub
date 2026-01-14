@@ -2,16 +2,18 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import link from "daisyui/components/link";
+
+import NavLink from "@/components/buttons/NavLink";
+import Logo from "@/layouts/Logo";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link href={"/"}>Home</Link>
+        <NavLink href={"/"}>Home</NavLink>
       </li>
       <li>
-        <Link href={"/services"}>Services</Link>
+        <NavLink href={"/services"}>Services</NavLink>
       </li>
     </>
   );
@@ -77,16 +79,7 @@ const Navbar = () => {
           </div>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 ml-2 lg:ml-4">
-            <img
-              className="w-10 h-10 sm:w-12 sm:h-12"
-              src={""}
-              alt="BookPilot Logo"
-            />
-            <span className="font-bold text-lg sm:text-xl hidden sm:inline">
-              BookPilot
-            </span>
-          </Link>
+          <Logo />
         </div>
 
         {/* Desktop Menu */}

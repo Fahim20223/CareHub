@@ -71,7 +71,7 @@ const Testimonials = () => {
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             What Our Clients
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 dark:from-emerald-400 dark:to-teal-400">
+            <span className="block mt-2 text-transparent bg-clip-text bg-linear-to-r from-blue-500 to-purple-500 dark:from-emerald-400 dark:to-teal-400">
               Say About Us
             </span>
           </h2>
@@ -111,7 +111,7 @@ const Testimonials = () => {
 
               {/* Text */}
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed relative z-10">
-                "{testimonial.text}"
+                `{testimonial.text}`
               </p>
 
               {/* Author */}
@@ -143,7 +143,7 @@ const Testimonials = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-pink-500/20 dark:from-emerald-500/20 dark:to-teal-500/20 rounded-full blur-2xl"
+                className="absolute -bottom-10 -left-10 w-32 h-32 bg-linear-to-r from-purple-500/20 to-pink-500/20 dark:from-emerald-500/20 dark:to-teal-500/20 rounded-full blur-2xl"
               />
             </motion.div>
           ))}
@@ -170,7 +170,7 @@ const Testimonials = () => {
               transition={{ delay: index * 0.1, type: "spring" }}
               className="text-center"
             >
-              <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent mb-2">
+              <div className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-purple-500 to-pink-500 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -185,14 +185,14 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center bg-gradient-to-r from-purple-500 to-pink-500 dark:from-emerald-500 dark:to-teal-600 rounded-3xl p-12"
+          className="mt-16 text-center bg-linear-to-r from-purple-500 to-pink-500 dark:from-emerald-500 dark:to-teal-600 rounded-3xl p-12"
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Ready to Experience Quality Care?
           </h3>
           <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            Join hundreds of satisfied families who trust Care.IO for their
-            loved ones' care needs.
+            Join hundreds of satisfied families who trust CareHub for their
+            loved ones care needs.
           </p>
           <motion.button
             whileHover={{ scale: 1.05, y: -3 }}

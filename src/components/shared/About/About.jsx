@@ -11,10 +11,11 @@ const About = () => {
       title: "Dedicated Team",
       description:
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
-      color: "from-pink-400 to-rose-400",
-      darkColor: "from-emerald-400 to-teal-500",
+      colorLight: "from-pink-400 to-rose-400",
+      colorDark: "from-emerald-400 to-teal-500",
       bgLight: "bg-pink-50",
-      bgDark: "bg-emerald-950/30",
+      bgDark: "dark:bg-emerald-950/30",
+      borderHover: "hover:border-pink-200 dark:hover:border-emerald-500/30",
     },
     {
       icon: <Shield className="w-8 h-8" />,
@@ -22,10 +23,11 @@ const About = () => {
       title: "Trusted Institute",
       description:
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
-      color: "from-cyan-400 to-blue-400",
-      darkColor: "from-teal-400 to-emerald-500",
+      colorLight: "from-cyan-400 to-blue-400",
+      colorDark: "from-teal-400 to-emerald-500",
       bgLight: "bg-cyan-50",
-      bgDark: "bg-teal-950/30",
+      bgDark: "dark:bg-teal-950/30",
+      borderHover: "hover:border-cyan-200 dark:hover:border-emerald-500/30",
     },
     {
       icon: <Award className="w-8 h-8" />,
@@ -33,10 +35,11 @@ const About = () => {
       title: "Affordable Price",
       description:
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
-      color: "from-orange-400 to-amber-400",
-      darkColor: "from-green-400 to-emerald-500",
+      colorLight: "from-orange-400 to-amber-400",
+      colorDark: "from-green-400 to-emerald-500",
       bgLight: "bg-orange-50",
-      bgDark: "bg-green-950/30",
+      bgDark: "dark:bg-green-950/30",
+      borderHover: "hover:border-orange-200 dark:hover:border-emerald-500/30",
     },
     {
       icon: <Clock className="w-8 h-8" />,
@@ -44,10 +47,11 @@ const About = () => {
       title: "Emergency Support",
       description:
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
-      color: "from-purple-400 to-violet-400",
-      darkColor: "from-emerald-400 to-green-500",
+      colorLight: "from-purple-400 to-violet-400",
+      colorDark: "from-emerald-400 to-green-500",
       bgLight: "bg-purple-50",
-      bgDark: "bg-emerald-950/30",
+      bgDark: "dark:bg-emerald-950/30",
+      borderHover: "hover:border-purple-200 dark:hover:border-emerald-500/30",
     },
   ];
 
@@ -65,22 +69,22 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{ y: -10 }}
-                className={`${feature.bgLight} dark:${feature.bgDark} rounded-3xl p-6 lg:p-8 relative overflow-hidden group cursor-pointer transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-emerald-500/30 hover:shadow-xl`}
+                className={`${feature.bgLight} ${feature.bgDark} rounded-3xl p-6 lg:p-8 relative overflow-hidden group cursor-pointer transition-all duration-300 border border-transparent ${feature.borderHover} hover:shadow-xl`}
               >
                 {/* Number Badge */}
                 <div className="absolute top-6 right-6">
                   <span
-                    className={`text-4xl font-bold bg-gradient-to-r ${feature.color} dark:${feature.darkColor} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}
+                    className={`text-4xl font-bold bg-gradient-to-r ${feature.colorLight} dark:bg-gradient-to-r dark:${feature.colorDark} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}
                   >
                     {feature.number}
                   </span>
                 </div>
 
-                {/* Icon */}
+                {/* Icon - Light Mode */}
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} dark:${feature.darkColor} flex items-center justify-center text-white mb-6 shadow-lg group-hover:shadow-2xl transition-all`}
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.colorLight} dark:bg-gradient-to-r dark:${feature.colorDark} flex items-center justify-center text-white mb-6 shadow-lg group-hover:shadow-2xl transition-all`}
                 >
                   {feature.icon}
                 </motion.div>
@@ -114,20 +118,20 @@ const About = () => {
                 {/* Main Image */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="col-span-2 relative rounded-3xl overflow-hidden shadow-2xl"
+                  className="col-span-2 relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-emerald-900/20"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?w=800&q=80"
                     alt="Elderly care"
                     className="w-full h-80 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent dark:from-black/70 dark:to-transparent" />
                 </motion.div>
 
                 {/* Small Images */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative rounded-2xl overflow-hidden shadow-xl"
+                  className="relative rounded-2xl overflow-hidden shadow-xl dark:shadow-emerald-900/20"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&q=80"
@@ -137,7 +141,7 @@ const About = () => {
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative rounded-2xl overflow-hidden shadow-xl"
+                  className="relative rounded-2xl overflow-hidden shadow-xl dark:shadow-emerald-900/20"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=400&q=80"
