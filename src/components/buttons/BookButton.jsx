@@ -7,7 +7,7 @@ const BookButton = ({ service }) => {
   const isLogin = false;
   const router = useRouter();
   const path = usePathname();
-  const book2Cart = () => {
+  const book = () => {
     if (isLogin) alert(service._id);
     else {
       router.push(`/login?callbackUrl=${path}`);
@@ -16,7 +16,7 @@ const BookButton = ({ service }) => {
   return (
     <div>
       <button
-        onClick={book2Cart}
+        onClick={book}
         className="px-6 py-3 rounded-full bg-pink-500 dark:bg-green-500 text-white font-semibold shadow hover:scale-105 transition flex gap-1 items-center"
       >
         <FaCartPlus />

@@ -11,7 +11,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
       rating: 5,
-      text: "Care.IO has been a blessing for our family. The caregivers are professional, caring, and treat my children like their own. Highly recommended!",
+      text: "CareHub has been a blessing for our family. The caregivers are professional, caring, and treat my children like their own. Highly recommended!",
     },
     {
       name: "Michael Chen",
@@ -19,7 +19,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
       rating: 5,
-      text: "The elderly care service exceeded our expectations. My mother receives compassionate care every day. Thank you Care.IO!",
+      text: "The elderly care service exceeded our expectations. My mother receives compassionate care every day. Thank you CareHub!",
     },
     {
       name: "Emily Davis",
@@ -43,7 +43,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80",
       rating: 5,
-      text: "As a working mom, Care.IO gives me peace of mind. My kids love their caregivers and I can focus on work knowing they're in good hands.",
+      text: "As a working mom, CareHub gives me peace of mind. My kids love their caregivers and I can focus on work knowing they're in good hands.",
     },
     {
       name: "Robert Thompson",
