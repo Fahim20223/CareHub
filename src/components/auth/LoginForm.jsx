@@ -1,26 +1,39 @@
 "use client";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const onSubmit = async (data) => {
-    try {
-      console.log("Login Data:", data);
-      // Add your login logic here
-      // Example: await signIn(data.email, data.password);
-    } catch (error) {
-      console.error("Login error:", error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await signIn("credentials", {
+      email: formData.email,
+      password: formData.password,
+      formData,
+      redirect: false,
+    });
+    console.log(result);
+
+    if (!result.ok) {
+      Swal.fire("error", "Email password not matched", "error");
+    } else {
+      Swal.fire("success", "Welcome to CareHub", "success");
+
+      router.push("/");
     }
+    // console.log("Login:", formData);
+    // Add your login logic here
   };
 
   const handleGoogleLogin = () => {
@@ -29,7 +42,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-50 via-white to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -39,7 +52,7 @@ const LoginForm = () => {
         {/* Card */}
         <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
           {/* Header */}
-          <div className="bg-linear-to-r from-pink-500 to-rose-500 dark:from-emerald-500 dark:to-teal-600 p-8 text-center">
+          <div className="bg-gradient-to-r from-pink-500 to-rose-500 dark:from-emerald-500 dark:to-teal-600 p-8 text-center">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -51,7 +64,7 @@ const LoginForm = () => {
             <h2 className="text-3xl font-bold text-white mb-2">
               Welcome Back!
             </h2>
-            <p className="text-white/90">Login to continue to CareHub</p>
+            <p className="text-white/90">Login to continue to Care.IO</p>
           </div>
 
           {/* Form Content */}
@@ -70,27 +83,15 @@ const LoginForm = () => {
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                   <input
                     type="email"
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Invalid email address",
-                      },
-                    })}
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 ${
-                      errors.email
-                        ? "border-red-500 dark:border-red-500"
-                        : "border-gray-200 dark:border-gray-700"
-                    } bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:border-pink-500 dark:focus:border-emerald-500 focus:outline-none transition-colors`}
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:border-pink-500 dark:focus:border-emerald-500 focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.email.message}
-                  </p>
-                )}
               </motion.div>
 
               {/* Password Field */}
@@ -106,14 +107,12 @@ const LoginForm = () => {
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                   <input
                     type={showPassword ? "text" : "password"}
-                    {...register("password", {
-                      required: "Password is required",
-                    })}
-                    className={`w-full pl-12 pr-12 py-3 rounded-xl border-2 ${
-                      errors.password
-                        ? "border-red-500 dark:border-red-500"
-                        : "border-gray-200 dark:border-gray-700"
-                    } bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:border-pink-500 dark:focus:border-emerald-500 focus:outline-none transition-colors`}
+                    required
+                    value={formData.password}
+                    onChange={(e) =>
+                      setFormData({ ...formData, password: e.target.value })
+                    }
+                    className="w-full pl-12 pr-12 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:border-pink-500 dark:focus:border-emerald-500 focus:outline-none transition-colors"
                     placeholder="••••••••"
                   />
                   <button
@@ -128,12 +127,6 @@ const LoginForm = () => {
                     )}
                   </button>
                 </div>
-                {errors.password && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.password.message}
-                  </p>
-                )}
               </motion.div>
 
               {/* Remember Me & Forgot Password */}
@@ -141,7 +134,6 @@ const LoginForm = () => {
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    {...register("rememberMe")}
                     className="checkbox checkbox-sm border-gray-300 dark:border-gray-600 [--chkbg:theme(colors.pink.500)] dark:[--chkbg:theme(colors.emerald.500)]"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
@@ -160,11 +152,10 @@ const LoginForm = () => {
               <motion.button
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={handleSubmit(onSubmit)}
-                disabled={isSubmitting}
-                className="w-full py-4 rounded-xl bg-pink-500 dark:bg-green-500 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handleSubmit}
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 dark:from-emerald-500 dark:to-teal-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
               >
-                {isSubmitting ? "Logging in..." : "Login"}
+                Login
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
 
@@ -185,7 +176,6 @@ const LoginForm = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleGoogleLogin}
-                type="button"
                 className="w-full py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-3"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24">

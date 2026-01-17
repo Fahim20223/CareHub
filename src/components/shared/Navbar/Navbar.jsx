@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react";
 
 import NavLink from "@/components/buttons/NavLink";
 import Logo from "@/layouts/Logo";
+import AuthButtons from "@/components/buttons/AuthButtons";
 
 const Navbar = () => {
   const links = (
@@ -141,12 +142,7 @@ const Navbar = () => {
           ) : ( */}
           {/* // Login/Register Buttons */}
           <div className="flex gap-1 sm:gap-2">
-            <Link
-              href="/login"
-              className="btn bg-pink-500 text-white dark:bg-green-500 dark:border-0 btn-sm rounded-lg text-xs sm:text-sm"
-            >
-              Login
-            </Link>
+            <AuthButtons />
             <Link
               href="/register"
               className="btn bg-pink-500 dark:bg-green-500 dark:border-0 btn-sm text-white rounded-lg text-xs sm:text-sm"
