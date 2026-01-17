@@ -3,6 +3,40 @@ import BookButton from "@/components/buttons/BookButton";
 import Image from "next/image";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const service = await getSingleProduct(id); // DB / API fetch
+
+  return {
+    title: service.name,
+    description:
+      service.shortDescription ||
+      service.longDescription?.slice(0, 160) ||
+      "Healthcare Service & all the support systems given by CareHub",
+
+    openGraph: {
+      name: service.name,
+      description:
+        "CareHub offers trusted healthcare services designed for modern patient needs.",
+      images: [
+        {
+          url: service.image || "https://i.ibb.co.com/q3dhHmYd/image.png",
+          width: 1200,
+          height: 630,
+          alt: service.name,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: service.name,
+      description: "Fun and educational learning toy for kids.",
+      images: [service.image || "https://i.ibb.co.com/q3dhHmYd/image.png"],
+    },
+  };
+}
+
 const ServiceDetails = async ({ params }) => {
   const { id } = await params;
   const service = await getSingleProduct(id);

@@ -1,5 +1,9 @@
 import Services from "@/components/home/Services";
 import React from "react";
+export const metadata = {
+  title: "All Services",
+  description: "Services we are providing",
+};
 
 const ServicesPage = () => {
   return (
