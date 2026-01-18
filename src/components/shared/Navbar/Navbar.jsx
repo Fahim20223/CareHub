@@ -143,12 +143,12 @@ const Navbar = () => {
           {/* // Login/Register Buttons */}
           <div className="flex gap-1 sm:gap-2">
             <AuthButtons />
-            <Link
+            {/* <Link
               href="/register"
               className="btn bg-pink-500 dark:bg-green-500 dark:border-0 btn-sm text-white rounded-lg text-xs sm:text-sm"
             >
               Register
-            </Link>
+            </Link> */}
           </div>
           {/* )} */}
         </div>
