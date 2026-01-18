@@ -3,6 +3,7 @@ const dbname = process.env.DBNAME;
 export const collections = {
   SERVICES: "services",
   USERS: "users",
+  BOOKED: "booked",
 };
 
 const { MongoClient, ServerApiVersion } = require("mongodb");

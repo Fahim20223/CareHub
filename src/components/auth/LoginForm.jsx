@@ -25,17 +25,21 @@ const LoginForm = () => {
       email: formData.email,
       password: formData.password,
       // formData,
-      // redirect: false,
+      redirect: false,
       callbackUrl: params.get("callbackUrl") || "/",
     });
     console.log(result);
 
     if (!result.ok) {
-      Swal.fire("error", "Email password not matched", "error");
+      Swal.fire(
+        "error",
+        "Email password not matched. Try Google Login/ Register",
+        "error",
+      );
     } else {
       Swal.fire("success", "Welcome to CareHub", "success");
 
-      // router.push("/");
+      router.push(callBack);
     }
     // console.log("Login:", formData);
     // Add your login logic here

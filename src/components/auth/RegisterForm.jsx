@@ -18,6 +18,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { postUser } from "@/actions/server/auth";
 import SocialButton from "./SocialButton";
 import { signIn } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const params = useSearchParams();
@@ -47,9 +48,15 @@ const RegisterForm = () => {
       const result = await signIn("credentials", {
         email: formData.email,
         password: formData.password,
+        redirect: false,
         callbackUrl: callBackUrl,
       });
-      alert("successful");
+      if (result.ok) {
+        Swal.fire("success", "Registered successfully", "success");
+        router.push(callBackUrl);
+      } else {
+        Swal.fire("error", "Sorry", "error");
+      }
     }
 
     // Password validation

@@ -33,7 +33,7 @@ const Services = async ({ limit }) => {
     <div>
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
         {visibleServices.map((service, index) => (
-          <ServiceCard key={service.title} service={service} index={index} />
+          <ServiceCard key={service._id} service={service} index={index} />
         ))}
       </div>
     </div>
