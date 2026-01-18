@@ -4,7 +4,7 @@ import { collections, dbConnect } from "@/lib/dbConnect";
 import bcrypt from "bcryptjs";
 
 export const postUser = async (payload) => {
-  const { email, password, name } = payload;
+  const { email, password, name, image } = payload;
   //check payload
   if (!email || !password) return null;
 
@@ -19,6 +19,7 @@ export const postUser = async (payload) => {
     provider: "credentials",
     name,
     email,
+    image,
     password: await bcrypt.hash(password, 14),
     role: "user",
   };
