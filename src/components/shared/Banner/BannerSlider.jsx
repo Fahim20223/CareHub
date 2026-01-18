@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const BannerSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -16,21 +17,21 @@ const BannerSlider = () => {
       highlight: "Children",
       subtitle: "start with us!",
       description:
-        "There are many variations of passages Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.",
+        "We provide loving, safe, and professional childcare services that support your child’s growth, learning, and happiness. Our trained caregivers ensure a nurturing environment where children feel secure, engaged, and cared for every day.",
       image:
         "https://plus.unsplash.com/premium_photo-1666299880508-bffece864e96?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       circleImage:
         "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80",
-      gradient: "from-purple-500 to-pink-500",
-      darkGradient: "from-emerald-500 to-teal-600",
+      gradient: "from-teal-400 to-blue-500",
+      darkGradient: "from-green-500 to-emerald-700",
       badgeColor: "bg-purple-500",
-      darkBadgeColor: "bg-emerald-500",
-      accentColor: "text-purple-600",
-      darkAccentColor: "text-emerald-400",
+      darkBadgeColor: "bg-green-500",
+      accentColor: "text-teal-600",
+      darkAccentColor: "text-green-400",
       buttonPrimary: "bg-pink-500 hover:bg-pink-600",
-      darkButtonPrimary: "bg-emerald-500 hover:bg-emerald-600",
+      darkButtonPrimary: "bg-green-500 hover:bg-green-600",
       buttonSecondary: "bg-teal-500 hover:bg-teal-600",
-      darkButtonSecondary: "bg-teal-600 hover:bg-teal-700",
+      darkButtonSecondary: "bg-emerald-600 hover:bg-emerald-700",
       decorIcon: "🚗",
       smallText: "Learn Play",
     },
@@ -43,18 +44,18 @@ const BannerSlider = () => {
       highlight: "Your Family",
       subtitle: "Will Love",
       description:
-        "There are many variations of passages Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.",
+        "Our elderly care services focus on comfort, dignity, and independence. We offer compassionate in-home support, daily assistance, and companionship to help seniors live safely and happily within their own homes.",
       image:
         "https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?w=1920&q=80",
       circleImage:
         "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       gradient: "from-teal-400 to-blue-500",
       darkGradient: "from-green-500 to-emerald-700",
-      badgeColor: "bg-red-400",
+      badgeColor: "bg-purple-500",
       darkBadgeColor: "bg-green-500",
       accentColor: "text-teal-600",
       darkAccentColor: "text-green-400",
-      buttonPrimary: "bg-red-400 hover:bg-red-500",
+      buttonPrimary: "bg-pink-500 hover:bg-pink-600",
       darkButtonPrimary: "bg-green-500 hover:bg-green-600",
       buttonSecondary: "bg-teal-500 hover:bg-teal-600",
       darkButtonSecondary: "bg-emerald-600 hover:bg-emerald-700",
@@ -70,21 +71,21 @@ const BannerSlider = () => {
       highlight: "Healthcare",
       subtitle: "at Your Home",
       description:
-        "There are many variations of passages Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.",
+        "We deliver professional healthcare services at home, including nursing support, post-surgery care, and medical assistance. Our qualified healthcare professionals ensure personalized treatment and continuous monitoring for faster recovery.",
       image:
         "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1920&q=80",
       circleImage:
         "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80",
-      gradient: "from-green-400 to-emerald-600",
-      darkGradient: "from-teal-600 to-green-800",
-      badgeColor: "bg-blue-500",
-      darkBadgeColor: "bg-teal-500",
-      accentColor: "text-green-600",
-      darkAccentColor: "text-teal-400",
-      buttonPrimary: "bg-blue-500 hover:bg-blue-600",
-      darkButtonPrimary: "bg-teal-500 hover:bg-teal-600",
-      buttonSecondary: "bg-emerald-500 hover:bg-emerald-600",
-      darkButtonSecondary: "bg-green-600 hover:bg-green-700",
+      gradient: "from-teal-400 to-blue-500",
+      darkGradient: "from-green-500 to-emerald-700",
+      badgeColor: "bg-purple-500",
+      darkBadgeColor: "bg-green-500",
+      accentColor: "text-teal-600",
+      darkAccentColor: "text-green-400",
+      buttonPrimary: "bg-pink-500 hover:bg-pink-600",
+      darkButtonPrimary: "bg-green-500 hover:bg-green-600",
+      buttonSecondary: "bg-teal-500 hover:bg-teal-600",
+      darkButtonSecondary: "bg-emerald-600 hover:bg-emerald-700",
       decorIcon: "🏥",
       smallText: "Book Care",
     },
@@ -222,28 +223,30 @@ const BannerSlider = () => {
                   transition={{ delay: 1.8, duration: 0.8 }}
                   className="flex flex-col sm:flex-row gap-4 pt-4"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`px-8 py-4 rounded-full ${currentSlideData.buttonPrimary} dark:${currentSlideData.darkButtonPrimary} text-white font-semibold text-base sm:text-lg shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
-                  >
-                    About More
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <Link href={"/"}>
+                    <motion.button
+                      whileHover={{ scale: 1.05, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`px-8 py-4 rounded-full ${currentSlideData.buttonPrimary} dark:${currentSlideData.darkButtonPrimary} text-white font-semibold text-base sm:text-lg shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </motion.button>
+                      About More
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </motion.button>
+                  </Link>
 
-                  <motion.button
+                  {/* <motion.button
                     whileHover={{ scale: 1.05, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     className={`px-8 py-4 rounded-full ${currentSlideData.buttonSecondary} dark:${currentSlideData.darkButtonSecondary} text-white font-semibold text-base sm:text-lg shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
@@ -262,7 +265,7 @@ const BannerSlider = () => {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </motion.button>
+                  </motion.button> */}
                 </motion.div>
               </motion.div>
 

@@ -10,7 +10,7 @@ const About = () => {
       number: "01",
       title: "Dedicated Team",
       description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
+        "Our experienced and compassionate team is carefully selected and trained to deliver reliable, high-quality care. We work closely with families to ensure personalized support and consistent service excellence.",
       colorLight: "from-pink-400 to-rose-400",
       colorDark: "from-emerald-400 to-teal-500",
       bgLight: "bg-pink-50",
@@ -22,7 +22,7 @@ const About = () => {
       number: "02",
       title: "Trusted Institute",
       description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
+        "We are a trusted care provider with proven standards, verified caregivers, and transparent processes. Families rely on us for safe, ethical, and dependable care services they can confidently choose.",
       colorLight: "from-cyan-400 to-blue-400",
       colorDark: "from-teal-400 to-emerald-500",
       bgLight: "bg-cyan-50",
@@ -34,7 +34,7 @@ const About = () => {
       number: "03",
       title: "Affordable Price",
       description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
+        "We offer high-quality care services at fair and affordable prices without compromising safety or professionalism. Our flexible plans ensure quality care remains accessible for every family.",
       colorLight: "from-orange-400 to-amber-400",
       colorDark: "from-green-400 to-emerald-500",
       bgLight: "bg-orange-50",
@@ -46,7 +46,7 @@ const About = () => {
       number: "04",
       title: "Emergency Support",
       description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis excepturi words of voluptatum deleniti atque.",
+        "Our emergency support services are available when you need them most. We provide quick response and immediate assistance to ensure safety, comfort, and peace of mind during urgent situations.",
       colorLight: "from-purple-400 to-violet-400",
       colorDark: "from-emerald-400 to-green-500",
       bgLight: "bg-purple-50",
@@ -186,11 +186,10 @@ const About = () => {
                   </span>
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour randomised words which don't look
-                  even. Many desktop publishing packages and web page editors
-                  now use as their default model text.
+                  We provide compassionate and professional care services
+                  tailored for both children and seniors. Our trained caregivers
+                  focus on safety, comfort, and emotional well-being, ensuring
+                  trusted support for families at every stage of life.
                 </p>
               </div>
 

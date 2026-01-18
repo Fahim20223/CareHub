@@ -45,3 +45,14 @@ export const handleBooked = async ({ service, inc = true }) => {
 
   //   return { success: true };
 };
+export const getBooked = async () => {
+  const { user } = (await getServerSession(authOptions)) || {};
+  //   console.log(user);
+  if (!user) return [];
+
+  const query = { email: user?.email };
+
+  const result = await bookedCollection.find(query).toArray();
+
+  return result;
+};
