@@ -1,61 +1,43 @@
 import { getBooked } from "@/actions/server/booked";
 import BookedItems from "@/components/Cards/BookedItems";
+import { authOptions } from "@/lib/authOption";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+// import { authOptions } from "@/lib/auth";
 
 const BookedPage = async () => {
-  const bookedItems = await getBooked();
+  const session = await getServerSession(authOptions);
+
+  // 🔐 Not logged in → redirect
+  if (!session) {
+    redirect("/login?callbackUrl=/my-bookings");
+  }
+
+  const bookedItems = await getBooked(session.user.email);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-9 min-h-screen">
       {/* Header */}
       <div className="py-6">
-        <h2 className="text-2xl sm:text-3xl font-bold">
-          All the books added by the User
-        </h2>
-        <p className="opacity-60 mt-2">{bookedItems.length} books total</p>
+        <h2 className="text-2xl sm:text-3xl font-bold mt-6">My Bookings</h2>
+        <p className="opacity-60 mt-2 mb-9">
+          {bookedItems.length} bookings total
+        </p>
       </div>
 
       {bookedItems.length > 0 ? (
-        <>
-          {/* DESKTOP TABLE */}
-          {/* <div className="hidden md:block bg-base-100 dark:bg-gray-800 rounded-lg shadow-md overflow-x-auto">
-            <table className="w-full min-w-[700px]">
-              <thead className="bg-base-200 dark:bg-gray-900">
-                <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
-                    Product
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
-                    Author
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
-                    Price
-                  </th>
-                  <th className="px-6 py-4 text-center text-xs font-semibold uppercase">
-                    Quantity
-                  </th>
-                  <th className="px-6 py-4 text-center text-xs font-semibold uppercase">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {bookedItems.map((item) => (
-                  <BookedItems key={item._id} item={item} viewType="table" />
-                ))}
-              </tbody>
-            </table>
-          </div> */}
-
-          {/* MOBILE CARDS */}
-          <div className="md:hidden">
-            {bookedItems.map((item) => (
-              <BookedItems key={item._id} item={item} viewType="card" />
-            ))}
-          </div>
-        </>
+        <div className=" space-y-4">
+          {bookedItems.map((item) => (
+            <BookedItems key={item._id} item={item} viewType="card" />
+          ))}
+        </div>
       ) : (
-        <div className="text-center py-12 bg-base-100 dark:bg-gray-800 rounded-lg dark:shadow-md text-3xl">
-          <p className="opacity-60">There is no booked list by the user</p>
+        <div className="flex flex-col items-center justify-center bg-base-100 dark:bg-gray-800 rounded-xl dark:shadow-md text-center">
+          <div className="text-6xl mb-4">📋</div>
+          <h3 className="text-2xl font-semibold mb-2">No Bookings Found</h3>
+          <p className="opacity-60 mb-8">
+            You haven’t booked any services yet.
+          </p>
         </div>
       )}
     </div>

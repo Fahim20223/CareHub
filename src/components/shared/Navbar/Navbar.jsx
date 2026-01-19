@@ -6,8 +6,12 @@ import { Moon, Sun } from "lucide-react";
 import NavLink from "@/components/buttons/NavLink";
 import Logo from "@/layouts/Logo";
 import AuthButtons from "@/components/buttons/AuthButtons";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { status } = useSession();
+  const isLoggedIn = status === "authenticated";
+
   const links = (
     <>
       <li>
@@ -16,9 +20,14 @@ const Navbar = () => {
       <li>
         <NavLink href={"/services"}>Services</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink href={"/my-bookings"}>My Bookings</NavLink>
-      </li>
+      </li> */}
+      {isLoggedIn && (
+        <li>
+          <NavLink href="/my-bookings">My Bookings</NavLink>
+        </li>
+      )}
     </>
   );
 

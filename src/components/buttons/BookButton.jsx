@@ -21,7 +21,7 @@ const BookButton = ({ service }) => {
       if (result.success) {
         Swal.fire("Added to the booked list", service?.name, "success");
       } else {
-        Swal.fire("Opps", "Something Wrong Happened", error);
+        Swal.fire("Opps", "Something Wrong Happened", "error");
       }
       setIsLoading(false);
     } else {
