@@ -46,9 +46,7 @@ const ServiceDetails = async ({ params }) => {
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Image */}
         <div className="rounded-xl overflow-hidden h-[350px] w-full">
-          <Image
-            width={600}
-            height={420}
+          <img
             src={service.image}
             alt={service.image}
             className="w-full object-cover h-full"
