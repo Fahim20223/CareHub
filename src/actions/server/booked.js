@@ -1,7 +1,10 @@
 "use server";
 
 import { authOptions } from "@/lib/authOption";
+import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
+import { cache } from "react";
 
 const { dbConnect, collections } = require("@/lib/dbConnect");
 
@@ -45,7 +48,7 @@ export const handleBooked = async ({ service, inc = true }) => {
 
   //   return { success: true };
 };
-export const getBooked = async () => {
+export const getBooked = cache(async () => {
   const { user } = (await getServerSession(authOptions)) || {};
   //   console.log(user);
   if (!user) return [];
@@ -55,4 +58,23 @@ export const getBooked = async () => {
   const result = await bookedCollection.find(query).toArray();
 
   return result;
+});
+
+export const deleteItemsFromBookedList = async (id) => {
+  const { user } = (await getServerSession(authOptions)) || {};
+  //   console.log(user);
+  if (!user) return { success: false };
+
+  if (id?.length != 24) {
+    return { success: false };
+  }
+  const query = { _id: new ObjectId(id) };
+
+  const result = await bookedCollection.deleteOne(query);
+
+  if (Boolean(result.deletedCount)) {
+    revalidatePath("/my-bookings");
+  }
+
+  return { success: Boolean(result.deletedCount) };
 };

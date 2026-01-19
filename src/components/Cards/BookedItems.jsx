@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import { Trash2, Plus, Minus, Eye, Edit } from "lucide-react";
+import Swal from "sweetalert2";
+import { deleteItemsFromBookedList } from "@/actions/server/booked";
+import { toast } from "react-toastify";
 
 const BookedItems = ({
   item,
@@ -71,8 +74,41 @@ const BookedItems = ({
   // }
 
   // ----------------- CARD (MOBILE) -----------------
-  const handleDelete = () => {
-    alert("deleted the service");
+  const handleDelete = async () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Remove it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const result = await deleteItemsFromBookedList(_id);
+        if (result.success) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Opps!",
+            text: "Something went wrong",
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
+
+  const handleEdit = () => {
+    toast("This feature will work soon");
+  };
+
+  const handleEye = () => {
+    toast("This feature will work soon");
   };
 
   return (
@@ -108,10 +144,16 @@ const BookedItems = ({
         </div>
 
         <div className="flex gap-1">
-          <button className="btn btn-circle btn-xs btn-ghost btn-info">
+          <button
+            onClick={handleEdit}
+            className="btn btn-circle btn-xs btn-ghost btn-info"
+          >
             <Edit className="w-5 h-5" />
           </button>
-          <button className="btn btn-circle btn-xs btn-ghost">
+          <button
+            onClick={handleEye}
+            className="btn btn-circle btn-xs btn-ghost"
+          >
             <Eye className="w-5 h-5" />
           </button>
           <button

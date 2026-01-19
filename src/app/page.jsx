@@ -3,7 +3,7 @@ import BannerSlider from "@/components/shared/Banner/BannerSlider";
 import ServicesOverview from "@/components/shared/ServiesOverview/ServicesOverview";
 
 import Testimonials from "@/components/shared/Testimonials/Testimonials";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Home() {
   return (
