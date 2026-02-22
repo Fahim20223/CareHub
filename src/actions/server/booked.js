@@ -78,3 +78,47 @@ export const deleteItemsFromBookedList = async (id) => {
 
   return { success: Boolean(result.deletedCount) };
 };
+
+export const increaseItemDb = async (id, quantity) => {
+  const { user } = (await getServerSession(authOptions)) || {};
+  //   console.log(user);
+  if (!user) return { success: false };
+
+  if (quantity > 10) {
+    return { success: false, message: "You can't book 10 services at a time" };
+  }
+
+  const query = { _id: new ObjectId(id) };
+
+  const updatedData = {
+    $inc: {
+      quantity: 1,
+    },
+  };
+
+  const result = await bookedCollection.updateOne(query, updatedData);
+
+  return { success: Boolean(result.modifiedCount) };
+};
+
+export const decreaseItemDb = async (id, quantity) => {
+  const { user } = (await getServerSession(authOptions)) || {};
+  //   console.log(user);
+  if (!user) return { success: false };
+
+  if (quantity <= 1) {
+    return { success: false, message: "quantity can't be empty" };
+  }
+
+  const query = { _id: new ObjectId(id) };
+
+  const updatedData = {
+    $inc: {
+      quantity: -1,
+    },
+  };
+
+  const result = await bookedCollection.updateOne(query, updatedData);
+
+  return { success: Boolean(result.modifiedCount) };
+};

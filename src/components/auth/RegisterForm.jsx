@@ -346,7 +346,7 @@ const RegisterForm = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleSubmit}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 dark:from-emerald-500 dark:to-teal-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-xl bg-pink-500 dark:bg-green-500 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Create Account
                 <ArrowRight className="w-5 h-5" />

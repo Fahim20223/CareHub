@@ -20,8 +20,9 @@ const ServiceCard = ({ service, index }) => {
       {/* Image */}
       <div className="relative w-full h-52 md:h-56">
         <Image
-          width={500}
-          height={500}
+          // width={500}
+          // height={500}
+          fill
           src={service.image}
           alt={service.name}
           className="w-full h-full object-cover"

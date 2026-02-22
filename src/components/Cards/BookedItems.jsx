@@ -1,8 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Trash2, Plus, Minus, Eye, Edit } from "lucide-react";
 import Swal from "sweetalert2";
-import { deleteItemsFromBookedList } from "@/actions/server/booked";
+import {
+  decreaseItemDb,
+  deleteItemsFromBookedList,
+  increaseItemDb,
+} from "@/actions/server/booked";
 import { toast } from "react-toastify";
 
 const BookedItems = ({
@@ -10,8 +14,11 @@ const BookedItems = ({
   // viewType = "table",
   removeItem,
   updateQuantity,
+  totalPrice,
 }) => {
   const { name, image, quantity, pricePerHour, _id, username } = item;
+
+  const [loading, setLoading] = useState(false);
 
   // // ----------------- TABLE ROW (DESKTOP) -----------------
   // if (viewType === "table") {
@@ -86,7 +93,10 @@ const BookedItems = ({
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await deleteItemsFromBookedList(_id);
+
         if (result.success) {
+          removeItem(_id);
+
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -111,6 +121,36 @@ const BookedItems = ({
     toast("This feature will work soon");
   };
 
+  const onIncrease = async () => {
+    setLoading(true);
+    const result = await increaseItemDb(_id, quantity);
+
+    if (result.success) {
+      Swal.fire({
+        title: "Success!",
+        text: "Quantity increased",
+        icon: "success",
+      });
+      updateQuantity(_id, quantity + 1);
+    }
+    setLoading(false);
+  };
+
+  const onDecrease = async () => {
+    setLoading(true);
+    const result = await decreaseItemDb(_id, quantity);
+
+    if (result.success) {
+      Swal.fire({
+        title: "Success!",
+        text: "Quantity decreased",
+        icon: "success",
+      });
+      updateQuantity(_id, quantity - 1);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="bg-base-100 dark:bg-gray-800 border rounded-lg p-4 mb-4 shadow-sm">
       <div className="flex gap-4">
@@ -129,15 +169,19 @@ const BookedItems = ({
       <div className="flex justify-between items-center mt-4 pt-3 border-t">
         <div className="flex items-center gap-2">
           <button
-            onClick={() => updateQuantity?.(_id, -1)}
+            // onClick={() => updateQuantity?.(_id, -1)}
+            onClick={onDecrease}
             className="btn btn-circle btn-xs btn-ghost"
+            disabled={quantity === 1 || loading}
           >
             <Minus className="w-5 h-5" />
           </button>
           <span className="font-bold">{quantity}</span>
           <button
-            onClick={() => updateQuantity?.(_id, 1)}
+            // onClick={() => updateQuantity?.(_id, 1)}
+            onClick={onIncrease}
             className="btn btn-circle btn-xs btn-ghost"
+            disabled={quantity === 10 || loading}
           >
             <Plus className="w-5 h-5" />
           </button>

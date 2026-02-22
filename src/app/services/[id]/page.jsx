@@ -45,10 +45,11 @@ const ServiceDetails = async ({ params }) => {
     <section className="max-w-7xl mx-auto px-4 py-10">
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Image */}
-        <div className="rounded-xl overflow-hidden h-[350px] w-full">
-          <img
+        <div className="relative rounded-xl overflow-hidden h-[350px] w-full">
+          <Image
             src={service.image}
             alt={service.image}
+            fill
             className="w-full object-cover h-full"
           />
         </div>

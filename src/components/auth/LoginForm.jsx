@@ -73,7 +73,7 @@ const LoginForm = () => {
             <h2 className="text-3xl font-bold text-white mb-2">
               Welcome Back!
             </h2>
-            <p className="text-white/90">Login to continue to Care.IO</p>
+            <p className="text-white/90">Login to continue to CareHub</p>
           </div>
 
           {/* Form Content */}
@@ -162,7 +162,7 @@ const LoginForm = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleSubmit}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 dark:from-emerald-500 dark:to-teal-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-xl bg-pink-500 dark:bg-green-500 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Login
                 <ArrowRight className="w-5 h-5" />
